@@ -2,7 +2,7 @@ const Queue = require('bull')
 
 const createQueueConnection = (queueName,allQueueConfigs) => {
     const queueConfig = allQueueConfigs.find((config)=>{return config.name===queueName})
-    const queue = new Queue(queueName, queueConfig.url)
+    const queue = new Queue(queueName, { redis: queueConfig.redis })
     return queue
 }
 
